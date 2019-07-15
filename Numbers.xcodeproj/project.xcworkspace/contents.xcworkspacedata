@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ColourNumbers.xcodeproj">
+      location = "self:Numbers.xcodeproj">
    </FileRef>
 </Workspace>
