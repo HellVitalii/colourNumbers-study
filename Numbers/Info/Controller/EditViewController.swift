@@ -8,13 +8,14 @@
 
 import UIKit
 
-protocol InfoControllerViewDelegate {
-    func change(number:Int,in row:Int)
+protocol EditViewControllerDelegate: class {
+    func change(sender: EditViewController, number:Double)
 }
-class InfoControllerView: UIViewController {
-    var number = 0;
+
+class EditViewController: UIViewController {
+    var number:Double = 0;
     var row = 0;
-    var delegate: InfoControllerViewDelegate?;
+    weak var delegate: EditViewControllerDelegate?
     
     @IBOutlet weak var numberField: UITextField!
     
@@ -25,8 +26,8 @@ class InfoControllerView: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        guard let newNumber = Int(numberField.text!) else {return}
-        delegate?.change(number: newNumber, in: row)
+        guard let newNumber = Double(numberField.text!) else {return}
+        delegate?.change(sender: self, number: newNumber)
         navigationController?.popViewController(animated: true)
     }
 }

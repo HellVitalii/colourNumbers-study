@@ -12,7 +12,11 @@
 		110C724E22D84E620096817A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C724C22D84E620096817A /* Main.storyboard */; };
 		110C725022D84E620096817A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110C724F22D84E620096817A /* Assets.xcassets */; };
 		110C725322D84E620096817A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 110C725122D84E620096817A /* LaunchScreen.storyboard */; };
-		110C726922D8873E0096817A /* InfoControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110C726822D8873E0096817A /* InfoControllerView.swift */; };
+		110C726922D8873E0096817A /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110C726822D8873E0096817A /* EditViewController.swift */; };
+		110C726B22DC54B20096817A /* FormattedNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110C726A22DC54B20096817A /* FormattedNumbers.swift */; };
+		110C726D22DCA69B0096817A /* CellWithNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110C726C22DCA69B0096817A /* CellWithNumber.swift */; };
+		110C726F22DD90A60096817A /* textNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110C726E22DD90A60096817A /* textNumber.swift */; };
+		110C727122DDD2230096817A /* AddingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110C727022DDD2230096817A /* AddingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +27,11 @@
 		110C724F22D84E620096817A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		110C725222D84E620096817A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		110C725422D84E620096817A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		110C726822D8873E0096817A /* InfoControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoControllerView.swift; sourceTree = "<group>"; };
+		110C726822D8873E0096817A /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		110C726A22DC54B20096817A /* FormattedNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedNumbers.swift; sourceTree = "<group>"; };
+		110C726C22DCA69B0096817A /* CellWithNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithNumber.swift; sourceTree = "<group>"; };
+		110C726E22DD90A60096817A /* textNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textNumber.swift; sourceTree = "<group>"; };
+		110C727022DDD2230096817A /* AddingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,8 @@
 		110C725B22D850DE0096817A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				110C726A22DC54B20096817A /* FormattedNumbers.swift */,
+				110C726E22DD90A60096817A /* textNumber.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -84,6 +94,8 @@
 		110C725C22D850EF0096817A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				110C726C22DCA69B0096817A /* CellWithNumber.swift */,
+				110C727022DDD2230096817A /* AddingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,7 +169,7 @@
 		110C726622D8517C0096817A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				110C726822D8873E0096817A /* InfoControllerView.swift */,
+				110C726822D8873E0096817A /* EditViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,9 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110C726D22DCA69B0096817A /* CellWithNumber.swift in Sources */,
+				110C727122DDD2230096817A /* AddingCell.swift in Sources */,
 				110C724B22D84E620096817A /* NumbersViewController.swift in Sources */,
-				110C726922D8873E0096817A /* InfoControllerView.swift in Sources */,
+				110C726922D8873E0096817A /* EditViewController.swift in Sources */,
+				110C726F22DD90A60096817A /* textNumber.swift in Sources */,
 				110C724922D84E620096817A /* AppDelegate.swift in Sources */,
+				110C726B22DC54B20096817A /* FormattedNumbers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
