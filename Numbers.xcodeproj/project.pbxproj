@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		110C724522D84E620096817A /* Numbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Numbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		110C724822D84E620096817A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		110C724822D84E620096817A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Application/Controller/AppDelegate.swift; sourceTree = "<group>"; };
 		110C724A22D84E620096817A /* NumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
 		110C724D22D84E620096817A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		110C724F22D84E620096817A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +64,9 @@
 		110C724722D84E620096817A /* Numbers */ = {
 			isa = PBXGroup;
 			children = (
+				110C727322E1BFFF0096817A /* New Group */,
+				110C724822D84E620096817A /* AppDelegate.swift */,
+				110C725122D84E620096817A /* LaunchScreen.storyboard */,
 				110C725A22D850BD0096817A /* Application */,
 				110C725E22D8511D0096817A /* Table */,
 				110C726322D8516F0096817A /* Info */,
@@ -136,8 +139,6 @@
 		110C726222D851670096817A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				110C724822D84E620096817A /* AppDelegate.swift */,
-				110C725122D84E620096817A /* LaunchScreen.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -181,6 +182,13 @@
 				110C725422D84E620096817A /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		110C727322E1BFFF0096817A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

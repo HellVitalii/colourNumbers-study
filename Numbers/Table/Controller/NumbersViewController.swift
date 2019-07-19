@@ -11,30 +11,36 @@ import UIKit
 class NumbersViewController: UIViewController {
 
    // var dataWithRandomNumbers = [Int]();
-    var dataWithColorNumbers = FormattedNumbersStore()
-    var selectedRow = -1;
+    var dataWithColorNumbers: FormattedNumbersStore!
     var selectedIndexPath: IndexPath? = nil;
+    
+    var selectedUIView = false
     
     @IBOutlet weak var tableWithNumber: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        dataWithColorNumbers = FormattedNumbersStore(count:Int.random(in: 10..<50))
+    
+        print(selectedUIView)
+        //elf.tableWithNumber.reloadData()
         
-//        for _ in 0...Int.random(in: 10..<50){
-//
-//            self.dataWithRandomNumbers.append(Int.random(in: 5..<100))
-//        }
-        self.tableWithNumber.reloadData()
+        
+        
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let dvc = segue.destination as? EditViewController else {return}
         
         dvc.delegate = self
-        dvc.row = selectedRow;
-        dvc.number = dataWithColorNumbers[selectedRow].number
+        dvc.row = selectedIndexPath!.row;
+        if selectedIndexPath?.section == 1 {
+            dvc.number = dataWithColorNumbers.loveNumbers![selectedIndexPath!.row].number
+        }
+        if selectedIndexPath?.section == 2 {
+            dvc.number = dataWithColorNumbers![selectedIndexPath!.row].number
+        }
+        
     }
     
    /* override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +56,12 @@ class NumbersViewController: UIViewController {
 extension NumbersViewController: EditViewControllerDelegate{
     
     func change(sender: EditViewController, number: Double) {
-        dataWithColorNumbers[selectedRow].number = number;
+        if selectedIndexPath?.section == 1 {
+            dataWithColorNumbers.loveNumbers![selectedIndexPath!.row].number = number
+        }
+        if selectedIndexPath?.section == 2 {
+            dataWithColorNumbers[selectedIndexPath!.row].number = number;
+        }
         tableWithNumber.reloadRows(at: [selectedIndexPath!], with: UITableView.RowAnimation.left)
     }
 
@@ -64,24 +75,68 @@ extension NumbersViewController: AddingCellDelegate{
     
 }
 
+extension NumbersViewController: CellWithNumberDelegate{
+    func addToUserDefaults(sender: UITableViewCell) {
+        let cell = sender as! CellWithNumber
+        let indexPath = self.tableWithNumber.indexPath(for: sender)
+        let tempNumber = dataWithColorNumbers[indexPath!.row]
+        dataWithColorNumbers.numbers.remove(at: indexPath!.row)
+        dataWithColorNumbers.loveNumbers!.append(tempNumber)
+    
+    }
+    
+    func deleteFromUserDefaults(sender: UITableViewCell) {
+    
+        let indexPath = self.tableWithNumber.indexPath(for: sender)
+        let tempNumber = dataWithColorNumbers.loveNumbers![indexPath!.row]
+        dataWithColorNumbers.numbers.append(tempNumber)
+        dataWithColorNumbers.loveNumbers!.remove(at: indexPath!.row)
+
+        
+    }
+    
+    
+}
 extension NumbersViewController: UITableViewDelegate {
     
 }
 
 extension NumbersViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3;
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section==0 {
+            return 1
+        }
+        if section==1 {
+            return dataWithColorNumbers.loveNumbers!.count
+        }
         return dataWithColorNumbers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row==0) {
+        if (indexPath.section==0) {
             let cell = tableView.dequeueReusableCell(withIdentifier:"addCell", for: indexPath) as! AddingCell
             cell.delegate = self
             return cell
         }
+        if (indexPath.section==1)
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "basicStyle", for: indexPath) as! CellWithNumber
+            
+            cell.delegate = self
+            
+            cell.configure(with: dataWithColorNumbers.loveNumbers![indexPath.row])
+            cell.addSwitch.isOn = true
+            
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "basicStyle", for: indexPath) as! CellWithNumber
+        
+        cell.delegate = self
         
         cell.configure(with: dataWithColorNumbers[indexPath.row])
         
@@ -90,9 +145,7 @@ extension NumbersViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if (indexPath.row==0) {
-        } else {
-            selectedRow = indexPath.row
+        if (indexPath.section != 0) {
             selectedIndexPath = indexPath
             performSegue(withIdentifier: "info", sender: nil)
         }
