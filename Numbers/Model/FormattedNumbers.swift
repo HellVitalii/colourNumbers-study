@@ -7,7 +7,12 @@
 //
 
 import UIKit
-struct FormattedNumber: Codable{
+class FormattedNumber: Codable, Equatable{
+    static func == (lhs: FormattedNumber, rhs: FormattedNumber) -> Bool {
+        return lhs.color == rhs.color && lhs.number == rhs.number
+    }
+    
+    
     var number: Double
     var color: UIColor
     var text: String{
@@ -36,7 +41,7 @@ struct FormattedNumber: Codable{
         self.color = UIColor.init(hue: CGFloat.random(in: 0..<1), saturation: 1, brightness: 1, alpha: 1)
     }
     
-    init(from decoder: Decoder) throws {
+     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.number = try container.decode(Double.self, forKey: .number)
         let hue = try container.decode(Double.self, forKey: .hue)
@@ -47,7 +52,7 @@ struct FormattedNumber: Codable{
     }
     
     func encode(to encoder: Encoder) throws {
-        var container = try encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(number, forKey: .number)
         var hue = CGFloat()
         var saturation = CGFloat()
@@ -62,35 +67,4 @@ struct FormattedNumber: Codable{
     }
 }
 
-class FormattedNumbersStore: Codable {
-    var numbers : [FormattedNumber]
-    var loveNumbers: [FormattedNumber]?
-    var count: Int{
-        return numbers.count
-    }
-    
-    init() {
-        self.numbers = [FormattedNumber]()
-        for _ in 0..<Int.random(in: 10..<50) {
-            self.numbers.append(FormattedNumber.init())
-        }    
-    }
-    
-    init(count:Int) {
-        
-        self.numbers = [FormattedNumber]()
-        for _ in 0..<count {
-            self.numbers.append(FormattedNumber.init())
-        }
-        
-    }
-    subscript(index: Int) -> FormattedNumber {
-        get{
-            return self.numbers[index]
-        }
-        set{
-            self.numbers[index] = newValue
-        }
-    }
-    
-}
+

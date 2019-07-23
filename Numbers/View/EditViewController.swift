@@ -9,24 +9,26 @@
 import UIKit
 
 protocol EditViewControllerDelegate: class {
-    func change(sender: EditViewController, number:Double)
+    func change(sender: EditViewController, number: FormattedNumber)
 }
 
 class EditViewController: UIViewController {
-    var number:Double = 0;
-    var row = 0;
+    
+    var viewModel: EditViewViewModel!
+    
     weak var delegate: EditViewControllerDelegate?
     
     @IBOutlet weak var numberField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.numberField.text = String(number)
+        self.numberField.text = viewModel.value()
         
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        guard let newNumber = Double(numberField.text!) else {return}
+        
+        let newNumber = FormattedNumber.init(number: Double(numberField.text!)!)
         delegate?.change(sender: self, number: newNumber)
         navigationController?.popViewController(animated: true)
     }

@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol CellWithNumberDelegate: class{
-    func addToUserDefaults(sender: UITableViewCell)
-    func deleteFromUserDefaults(sender: UITableViewCell)
+protocol CellWithNumberDelegate: class {
+    func addToFavorite(sender: UITableViewCell)
+    func deleteFromFavorite(sender: UITableViewCell)
 }
 
 class CellWithNumber: UITableViewCell {
@@ -22,18 +22,19 @@ class CellWithNumber: UITableViewCell {
     
     @IBAction func addToUserDefaultsSwitch(_ sender: UISwitch) {
         if addSwitch.isOn == true {
-            delegate?.addToUserDefaults(sender: self)
+            delegate?.addToFavorite(sender: self)
            
         }
         else {
-            delegate?.deleteFromUserDefaults(sender: self)
+            delegate?.deleteFromFavorite(sender: self)
             
         }
     }
     
-    func configure(with formattedNumber:FormattedNumber){
+    func configure(with formattedNumber:FormattedNumber, favorite:Bool){
         self.labelWithNumber.text = String(formattedNumber.number)
         self.labelWithNumber.textColor = formattedNumber.color
         self.labelWithText.text = formattedNumber.text
+        self.addSwitch.isOn = favorite
     }
 }
