@@ -8,15 +8,10 @@
 
 import UIKit
 
-protocol EditViewControllerDelegate: class {
-    func change(sender: EditViewController, number: FormattedNumber)
-}
 
-class EditViewController: UIViewController {
+class EditViewController: UIViewController, Storyboarded {
     
-    var viewModel: EditViewViewModel!
-    
-    weak var delegate: EditViewControllerDelegate?
+    var viewModel: EditViewModel!
     
     @IBOutlet weak var numberField: UITextField!
     
@@ -28,9 +23,7 @@ class EditViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         
-        let newNumber = FormattedNumber.init(number: Double(numberField.text!)!)
-        delegate?.change(sender: self, number: newNumber)
-        navigationController?.popViewController(animated: true)
+        viewModel.save(number: Double(self.numberField.text!)!)
     }
 }
 

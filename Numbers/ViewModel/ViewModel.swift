@@ -11,14 +11,17 @@ import UIKit
 protocol BaseViewModelDelegate: class {
     func  deleteRow(fromIndexPath indexPath: IndexPath)
 }
+protocol ListsViewModelCoordinator: class{
+    func useEditViewController()
+}
 
 class BaseViewModel {
     
     var dataWithColorNumbers: FormattedNumbersStore!
     var selectedIndexPath: IndexPath? = nil;
-    var selectedUIView = false
     let sections = ["AddCellInTheEnd", "Numbers"]
     weak var delegate: BaseViewModelDelegate?
+    weak var coordinator: ListsViewModelCoordinator?
     
     func numberOfSection() -> Int {
         return sections.count
@@ -50,14 +53,21 @@ class BaseViewModel {
         return nil
     }
     
-    func editViewViewModel() -> EditViewViewModel {
-        return EditViewViewModel.init(number: dataWithColorNumbers.numbers[selectedIndexPath!.row])
+    func editViewViewModel() -> EditViewModel {
+        return EditViewModel.init(number: dataWithColorNumbers.numbers[selectedIndexPath!.row].number)
     }
     
-    func changeNumber(with number: FormattedNumber) {
-        guard let index = dataWithColorNumbers.loveNumbers!.firstIndex(of: dataWithColorNumbers.numbers[selectedIndexPath!.row]) else {return}
-        dataWithColorNumbers.loveNumbers![index].number = number.number
-        dataWithColorNumbers.numbers[selectedIndexPath!.row].number = number.number
+    func changeNumber(with number: Double) {
+        if let index = dataWithColorNumbers.loveNumbers!.firstIndex(of: dataWithColorNumbers.numbers[selectedIndexPath!.row]) {
+            dataWithColorNumbers.loveNumbers![index].number = number
+        }
+        
+        dataWithColorNumbers.numbers[selectedIndexPath!.row].number = number
+    }
+    
+    func pressedCell(with indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
+        coordinator?.useEditViewController()
     }
     
     func add(number: Double) {
@@ -65,9 +75,11 @@ class BaseViewModel {
     }
     
     func delete(fromIndexPath indexPath: IndexPath) {
+        
+        if let index = dataWithColorNumbers.loveNumbers!.firstIndex(of: dataWithColorNumbers.numbers[indexPath.row]) {
+            dataWithColorNumbers.loveNumbers!.remove(at: index)
+        }
         dataWithColorNumbers.numbers.remove(at: indexPath.row)
-        guard let index = dataWithColorNumbers.loveNumbers!.firstIndex(of: dataWithColorNumbers.numbers[indexPath.row]) else {return}
-        dataWithColorNumbers.loveNumbers!.remove(at: index)
         delegate?.deleteRow(fromIndexPath: indexPath)
         
     }

@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var data: FormattedNumbersStore?
-    var allListViewModel = AllListViewModel()
-    var favoriteViewModel = FavoriteViewModel()
+    
+    var coordinator: MainCoordinator?
     
     
     
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.data = FormattedNumbersStore.init()
         
         
-        let tabBarController = self.window?.rootViewController as? UITabBarController
+        /*let tabBarController = self.window?.rootViewController as? UITabBarController
         let navigationControllerAll = tabBarController!.customizableViewControllers![0] as? UINavigationController
         let destVCAll = navigationControllerAll?.viewControllers[0] as? NumbersViewController
         //destVCAll?.tabBarItem.
@@ -40,7 +40,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         favoriteViewModel.dataWithColorNumbers = self.data
         favoriteViewModel.selectedUIView = true
         favoriteViewModel.delegate = destVCFavorite!
-        destVCFavorite?.viewModel = favoriteViewModel
+        destVCFavorite?.viewModel = favoriteViewModel*/
+        
+        // create the main navigation controller to be used for our app
+        
+        
+        // send that into our coordinator so that it can display view controllers
+        coordinator = MainCoordinator()
+        
+        // tell the coordinator to take over control
+ 
+        
+        // create a basic UIWindow and activate it
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = coordinator?.rootViewController
+        window?.makeKeyAndVisible()
         
         return true
     }

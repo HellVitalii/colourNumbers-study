@@ -8,9 +8,10 @@
 
 import UIKit
 
-protocol Coordinator {
-    var childCoordinators: [Coordinator] { get set }
-    var navigatonController: UINavigationController { get set }
-    
+protocol Coordinator: class {
+        
     func start()
+    
+    var rootViewController: UIViewController { get }  
+    
 }

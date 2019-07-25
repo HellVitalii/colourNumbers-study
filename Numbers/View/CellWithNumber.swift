@@ -22,8 +22,7 @@ class CellWithNumber: UITableViewCell {
     
     @IBAction func addToUserDefaultsSwitch(_ sender: UISwitch) {
         if addSwitch.isOn == true {
-            delegate?.addToFavorite(sender: self)
-           
+            delegate?.addToFavorite(sender: self)           
         }
         else {
             delegate?.deleteFromFavorite(sender: self)

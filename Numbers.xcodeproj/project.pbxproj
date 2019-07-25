@@ -19,15 +19,18 @@
 		1138113022E1CB48001D1066 /* CellWithNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138112F22E1CB48001D1066 /* CellWithNumberViewModel.swift */; };
 		1138113222E1E222001D1066 /* AddingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113122E1E222001D1066 /* AddingCellViewModel.swift */; };
 		1138113522E58BB4001D1066 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113422E58BB4001D1066 /* Box.swift */; };
-		1138113722E58EE1001D1066 /* EditViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113622E58EE1001D1066 /* EditViewViewModel.swift */; };
+		1138113722E58EE1001D1066 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113622E58EE1001D1066 /* EditViewModel.swift */; };
 		1138113922E5CEFC001D1066 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113822E5CEFC001D1066 /* FavoriteViewModel.swift */; };
 		1138113B22E6E25E001D1066 /* AllListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113A22E6E25E001D1066 /* AllListViewModel.swift */; };
 		1138113D22E6FBD8001D1066 /* FormattedNumbersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113C22E6FBD8001D1066 /* FormattedNumbersStore.swift */; };
 		1138114022E710A1001D1066 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113F22E710A1001D1066 /* Coordinator.swift */; };
 		1138114322E71402001D1066 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138114222E71402001D1066 /* Storyboard.swift */; };
-		1138114622E7159F001D1066 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1138114522E7159F001D1066 /* List.storyboard */; };
-		1138114822E71602001D1066 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1138114722E71602001D1066 /* Edit.storyboard */; };
-		1138114A22E7164B001D1066 /* Graphic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1138114922E7164B001D1066 /* Graphic.storyboard */; };
+		1138114C22E71FA6001D1066 /* AllListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138114B22E71FA6001D1066 /* AllListCoordinator.swift */; };
+		1138114E22E853DA001D1066 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138114D22E853DA001D1066 /* MainController.swift */; };
+		1138115022E87707001D1066 /* FavoriteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138114F22E87707001D1066 /* FavoriteListCoordinator.swift */; };
+		1138115222E981BE001D1066 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138115122E981BE001D1066 /* GraphViewController.swift */; };
+		1138115422E98497001D1066 /* GraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138115322E98497001D1066 /* GraphViewModel.swift */; };
+		1138115622E98601001D1066 /* GraphCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138115522E98601001D1066 /* GraphCoordinator.swift */; };
 		11BD86B422E1C3FA00D772BB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BD86B322E1C3FA00D772BB /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,15 +50,18 @@
 		1138112F22E1CB48001D1066 /* CellWithNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithNumberViewModel.swift; sourceTree = "<group>"; };
 		1138113122E1E222001D1066 /* AddingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingCellViewModel.swift; sourceTree = "<group>"; };
 		1138113422E58BB4001D1066 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
-		1138113622E58EE1001D1066 /* EditViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewViewModel.swift; sourceTree = "<group>"; };
+		1138113622E58EE1001D1066 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		1138113822E5CEFC001D1066 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		1138113A22E6E25E001D1066 /* AllListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewModel.swift; sourceTree = "<group>"; };
 		1138113C22E6FBD8001D1066 /* FormattedNumbersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedNumbersStore.swift; sourceTree = "<group>"; };
 		1138113F22E710A1001D1066 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1138114222E71402001D1066 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
-		1138114522E7159F001D1066 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
-		1138114722E71602001D1066 /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
-		1138114922E7164B001D1066 /* Graphic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graphic.storyboard; sourceTree = "<group>"; };
+		1138114B22E71FA6001D1066 /* AllListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListCoordinator.swift; sourceTree = "<group>"; };
+		1138114D22E853DA001D1066 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		1138114F22E87707001D1066 /* FavoriteListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCoordinator.swift; sourceTree = "<group>"; };
+		1138115122E981BE001D1066 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		1138115322E98497001D1066 /* GraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewModel.swift; sourceTree = "<group>"; };
+		1138115522E98601001D1066 /* GraphCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphCoordinator.swift; sourceTree = "<group>"; };
 		11BD86B322E1C3FA00D772BB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				1138113F22E710A1001D1066 /* Coordinator.swift */,
-				1138114222E71402001D1066 /* Storyboard.swift */,
+				1138114D22E853DA001D1066 /* MainController.swift */,
+				1138114B22E71FA6001D1066 /* AllListCoordinator.swift */,
+				1138114F22E87707001D1066 /* FavoriteListCoordinator.swift */,
+				1138115522E98601001D1066 /* GraphCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -134,10 +143,8 @@
 		1138114422E714F7001D1066 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				1138114222E71402001D1066 /* Storyboard.swift */,
 				110C724C22D84E620096817A /* Main.storyboard */,
-				1138114522E7159F001D1066 /* List.storyboard */,
-				1138114722E71602001D1066 /* Edit.storyboard */,
-				1138114922E7164B001D1066 /* Graphic.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -150,7 +157,8 @@
 				1138113822E5CEFC001D1066 /* FavoriteViewModel.swift */,
 				1138112F22E1CB48001D1066 /* CellWithNumberViewModel.swift */,
 				1138113122E1E222001D1066 /* AddingCellViewModel.swift */,
-				1138113622E58EE1001D1066 /* EditViewViewModel.swift */,
+				1138113622E58EE1001D1066 /* EditViewModel.swift */,
+				1138115322E98497001D1066 /* GraphViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -159,9 +167,10 @@
 			isa = PBXGroup;
 			children = (
 				110C724A22D84E620096817A /* NumbersViewController.swift */,
+				110C726822D8873E0096817A /* EditViewController.swift */,
 				110C726C22DCA69B0096817A /* CellWithNumber.swift */,
 				110C727022DDD2230096817A /* AddingCell.swift */,
-				110C726822D8873E0096817A /* EditViewController.swift */,
+				1138115122E981BE001D1066 /* GraphViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,10 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1138114822E71602001D1066 /* Edit.storyboard in Resources */,
 				110C725022D84E620096817A /* Assets.xcassets in Resources */,
-				1138114622E7159F001D1066 /* List.storyboard in Resources */,
-				1138114A22E7164B001D1066 /* Graphic.storyboard in Resources */,
 				110C724E22D84E620096817A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,15 +256,21 @@
 				110C726D22DCA69B0096817A /* CellWithNumber.swift in Sources */,
 				110C727122DDD2230096817A /* AddingCell.swift in Sources */,
 				1138114322E71402001D1066 /* Storyboard.swift in Sources */,
+				1138115022E87707001D1066 /* FavoriteListCoordinator.swift in Sources */,
+				1138115422E98497001D1066 /* GraphViewModel.swift in Sources */,
 				110C724B22D84E620096817A /* NumbersViewController.swift in Sources */,
 				110C726922D8873E0096817A /* EditViewController.swift in Sources */,
+				1138114E22E853DA001D1066 /* MainController.swift in Sources */,
 				110C726F22DD90A60096817A /* textNumber.swift in Sources */,
+				1138115222E981BE001D1066 /* GraphViewController.swift in Sources */,
+				1138114C22E71FA6001D1066 /* AllListCoordinator.swift in Sources */,
 				1138113D22E6FBD8001D1066 /* FormattedNumbersStore.swift in Sources */,
 				1138113522E58BB4001D1066 /* Box.swift in Sources */,
 				1138113022E1CB48001D1066 /* CellWithNumberViewModel.swift in Sources */,
-				1138113722E58EE1001D1066 /* EditViewViewModel.swift in Sources */,
+				1138113722E58EE1001D1066 /* EditViewModel.swift in Sources */,
 				110C724922D84E620096817A /* AppDelegate.swift in Sources */,
 				1138113222E1E222001D1066 /* AddingCellViewModel.swift in Sources */,
+				1138115622E98601001D1066 /* GraphCoordinator.swift in Sources */,
 				11BD86B422E1C3FA00D772BB /* ViewModel.swift in Sources */,
 				110C726B22DC54B20096817A /* FormattedNumbers.swift in Sources */,
 				1138113B22E6E25E001D1066 /* AllListViewModel.swift in Sources */,

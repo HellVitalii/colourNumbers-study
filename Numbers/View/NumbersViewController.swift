@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NumbersViewController: UIViewController {
+class NumbersViewController: UIViewController, Storyboarded {
     
     var viewModel: BaseViewModel!
     
@@ -16,17 +16,6 @@ class NumbersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let dvc = segue.destination as? EditViewController else {return}
-        
-        dvc.delegate = self
-        
-        let dvcViewModel = viewModel.editViewViewModel()
-        
-        dvc.viewModel = dvcViewModel
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,18 +27,6 @@ class NumbersViewController: UIViewController {
 extension NumbersViewController: BaseViewModelDelegate{
     func deleteRow(fromIndexPath indexPath: IndexPath) {
         tableWithNumber.deleteRows(at: [indexPath], with: UITableView.RowAnimation.left)
-    }
-    
-    
-    
-    
-}
-extension NumbersViewController: EditViewControllerDelegate{
-    
-    func change(sender: EditViewController, number: FormattedNumber) {
-        
-        viewModel.changeNumber(with: number)
-        tableWithNumber.reloadRows(at: [viewModel.selectedIndexPath!], with: UITableView.RowAnimation.left)
     }
 }
 
@@ -112,9 +89,8 @@ extension NumbersViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if (indexPath.section != 0) {
-            viewModel.selectedIndexPath = indexPath
-            performSegue(withIdentifier: "info", sender: nil)
+        if (indexPath.section != 0) {            
+            viewModel.pressedCell(with: indexPath)
         }
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
