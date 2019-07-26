@@ -10,7 +10,8 @@ import UIKit
 
 class GraphViewController: UIViewController, Storyboarded {
 
-    @IBOutlet weak var GraphView: UIView!
+   
+    @IBOutlet weak var graphView: GraphView!
     @IBOutlet weak var mediumLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
@@ -20,9 +21,25 @@ class GraphViewController: UIViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        graphView.numbers = viewModel.addDataToGraph()
+        graphView.colors = viewModel.addColorToGraph()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        graphView.backgroundColor = .white
+        
+        mediumLabel.text = viewModel.mean()
+        minLabel.text = viewModel.minimum()
+        maxLabel.text = viewModel.maximum()
+        graphView.numbers = viewModel.addDataToGraph()
+        graphView.colors = viewModel.addColorToGraph()
+        graphView.setNeedsDisplay()
+
+        
+        
+    }
 
     /*
     // MARK: - Navigation
