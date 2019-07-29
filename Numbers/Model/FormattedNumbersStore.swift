@@ -10,7 +10,11 @@ import Foundation
 
 class FormattedNumbersStore: Codable {
     var numbers : [FormattedNumber]
-    var loveNumbers: [FormattedNumber]?
+    var loveNumbers: [FormattedNumber]? {
+        didSet {
+            saveFavoriteNumbers()
+        }
+    }
     
     var count: Int{
         return numbers.count
@@ -19,6 +23,7 @@ class FormattedNumbersStore: Codable {
     init() {
         self.numbers = [FormattedNumber]()
         loadFavoriteNumbers()
+        if self.loveNumbers == nil {self.loveNumbers = []}
         self.numbers += self.loveNumbers!
         for _ in 0..<Int.random(in: 10..<50) {
             self.numbers.append(FormattedNumber.init())

@@ -10,18 +10,21 @@ import UIKit
 
 class GraphView: UIView {
     
-    var numbers: [Double]!
-    var colors: [UIColor]!
+    var numbers: [Double]?
+    var colors: [UIColor]?
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
+        guard let numbers = self.numbers, let colors = self.colors, let context = UIGraphicsGetCurrentContext() else {
+            return
+        }
+       
        // let sort = numbers.sorted(by: {$0 < $1})
         let count = numbers.count
      
         let max:CGFloat = CGFloat(numbers.max()!)
         let min:CGFloat = CGFloat(numbers.min()!)
-        guard let context = UIGraphicsGetCurrentContext() else {return}
+        
         
         let topXOfGraph = rect.width * 0.1
         let topYOfGraph = rect.height * 0.1
@@ -29,13 +32,13 @@ class GraphView: UIView {
         let bottomXOfGraph = rect.width - topXOfGraph
         let bottomYOfGraph = rect.height - topYOfGraph
         
-        let midPointYOfGraph = (rect.height - 2 * topYOfGraph) / (abs(min) + abs(max)) * max + topYOfGraph
-        
+        let midPointYOfGraph = (rect.height - 2 * topYOfGraph) / (abs(min) + abs(max)) * abs(max) + topYOfGraph
+       
         //abciss
-        let startPoint = CGPoint(x: topXOfGraph, y: topYOfGraph)
+        let startPointOfX = CGPoint(x: topXOfGraph, y: topYOfGraph)
         let endPoint = CGPoint(x: topXOfGraph, y: bottomYOfGraph)
         
-        context.move(to: startPoint)
+        context.move(to: startPointOfX)
         context.addLine(to: endPoint)
         
         //ordinat
@@ -45,8 +48,8 @@ class GraphView: UIView {
         context.move(to: midPoint)
         context.addLine(to: midEndPoint)
         
-        var index:CGFloat = 0
-        let first = numbers[0]
+        var index = 1
+        var first = CGFloat(numbers[0])
         let partOfXRange = (rect.width - 2 * topXOfGraph) / CGFloat (count)
         let partOfYRangePositive = (midPointYOfGraph - topYOfGraph) / abs(max)
         let partOfYRangeNegative = (bottomYOfGraph - midPointYOfGraph) / abs(min)
@@ -57,7 +60,9 @@ class GraphView: UIView {
         let font = UIFont.systemFont(ofSize: sizeFont)
         
         for number in massive {
-            if (CGFloat(number) > max) {continue}
+            if (CGFloat(number) > max) {
+                continue
+            }
             let string = NSAttributedString(string: String(number), attributes: [NSAttributedString.Key.font: font])
             let pointY = midPointYOfGraph - partOfYRangePositive * CGFloat(number)
             string.draw(at: CGPoint(x: topXOfGraph-1.5*sizeFont, y: pointY-0.8*sizeFont))
@@ -66,42 +71,77 @@ class GraphView: UIView {
         for number in massive {
             if (CGFloat(-number) < min) {continue}
             let string = NSAttributedString(string: String(-number), attributes: [NSAttributedString.Key.font: font])
-            let pointY = midPointYOfGraph - partOfYRangePositive * CGFloat(-number)
+            let pointY = midPointYOfGraph - partOfYRangeNegative * CGFloat(-number)
             string.draw(at: CGPoint(x: topXOfGraph-2*sizeFont, y: pointY - sizeFont))
         }
         
         UIGraphicsPopContext()
         context.strokePath()
-        var startY:CGFloat
+        let startY:CGFloat
         if (first > 0) {
-            startY = midPointYOfGraph - partOfYRangePositive * CGFloat(first)
+            startY = midPointYOfGraph - partOfYRangePositive * first
         }
         else {
-            startY = midPointYOfGraph - partOfYRangeNegative * CGFloat(first)
+            startY = midPointYOfGraph - partOfYRangeNegative * first
         }
+        var startPoint = CGPoint(x: topXOfGraph, y: startY)
         
-        var startLine = CGPoint(x: topXOfGraph, y: startY)
         
-        for i in numbers {
-            
-            context.beginPath()
-            context.setStrokeColor(colors![Int(index)].cgColor)
-            context.move(to: startLine)
-            let value: CGFloat = CGFloat(i)
-            let xPoint = topXOfGraph + partOfXRange * index
-            var yPoint: CGFloat
-            if (value > 0) {
-                yPoint = midPointYOfGraph - partOfYRangePositive * value
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        var colorForPath = [CGColor]()
+        let path = UIBezierPath()
+        path.move(to: midPoint)
+        path.addLine(to: startPoint)
+        colorForPath.append(colors[0].cgColor)
+        
+        
+        while (index < count) {
+            context.saveGState()
+            while (index < numbers.count) {
+                
+                let value: CGFloat = CGFloat(numbers[index])
+                let xPoint = topXOfGraph + partOfXRange * CGFloat(index)
+                colorForPath.append(colors[index].cgColor)
+                var yPoint: CGFloat
+                if (value > 0) {
+                    yPoint = midPointYOfGraph - partOfYRangePositive * value
+                }
+                else {
+                    yPoint = midPointYOfGraph - partOfYRangeNegative * value
+                }
+                let nextPoint = CGPoint(x: xPoint, y: yPoint)
+                
+                if (((first > 0 && value>0) || (first < 0 && value<0)) ) {
+
+                    path.addLine(to: nextPoint)
+                    startPoint = nextPoint
+                    
+                    index += 1
+                }
+                else {
+                    
+                    first = value
+                    let rightValue = startPoint.x * ( midPoint.y - yPoint )
+                    let leftValue = xPoint * ( midPoint.y - startPoint.y )
+                    startPoint.x = (leftValue - rightValue) / (yPoint - startPoint.y)
+                    startPoint.y = midPoint.y
+                    path.addLine(to: startPoint)
+                    break
+                }
+
             }
-            else {
-                yPoint = midPointYOfGraph - partOfYRangeNegative * value
-            }
-            let nextPoint = CGPoint(x: xPoint, y: yPoint)
-            index += 1
-            context.addLine(to: nextPoint)
-            startLine = nextPoint
-            context.strokePath()
-            
+
+            path.close()
+            path.addClip()
+            let colorsForPath = colorForPath as CFArray
+            let gr = CGGradient(colorsSpace: colorSpace, colors: colorsForPath, locations: nil)
+            context.drawLinearGradient(gr!, start: midPoint, end: midEndPoint, options: [])
+            path.stroke()
+            context.restoreGState()
+            //colorForPath.removeAll()
+            //path.removeAllPoints()
+            path.move(to: startPoint)
+            //context.strokePath()
         }
         
         

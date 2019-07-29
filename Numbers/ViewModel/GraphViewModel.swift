@@ -14,7 +14,6 @@ class GraphViewModel {
     weak var coordinator: GraphCoordinator?
     
     
-    
     func addDataToGraph() -> [Double] {
         var numbers = [Double]()
         for i in dataWithColorNumbers.numbers{
@@ -33,22 +32,29 @@ class GraphViewModel {
     
     func mean() -> String? {
         var mean: Double = 0
-        for i in dataWithColorNumbers.numbers {
-            mean += i.number
-        }
+        dataWithColorNumbers.numbers.forEach({ (number) in
+            mean += number.number
+        })
         let count = dataWithColorNumbers.numbers.count
         mean /= Double(count)
         return String(format: "Mean = %.2f", mean)
     }
     
     func minimum() -> String? {
+        
         let sort = dataWithColorNumbers.numbers.sorted(by: {$0.number < $1.number})
-        return "Minimum = \(sort[0].number)"
+        guard let number = sort.first else {
+            return nil
+        }
+        return "Minimum = \(number.number)"
     }
     
     func maximum() -> String? {
         let sort = dataWithColorNumbers.numbers.sorted(by: {$0.number > $1.number})
-        return "Maximum = \(sort[0].number)"
+        guard let number = sort.first else {
+            return nil
+        }
+        return "Maximum = \(number.number)"
     }
 }
 

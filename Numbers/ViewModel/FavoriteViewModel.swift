@@ -27,19 +27,20 @@ class FavoriteViewModel: BaseViewModel {
         return nil
     }
     override func editViewViewModel() -> EditViewModel {
-        return EditViewModel.init(number: dataWithColorNumbers!.loveNumbers![selectedIndexPath!.row].number)
+        return EditViewModel.init(number: dataWithColorNumbers.loveNumbers![selectedIndexPath!.row].number)
     }
     
     override func changeNumber(with number: Double) {
         guard let index = dataWithColorNumbers.numbers.firstIndex(of: dataWithColorNumbers.loveNumbers![selectedIndexPath!.row]) else {return}
         dataWithColorNumbers.loveNumbers![selectedIndexPath!.row].number = number
         dataWithColorNumbers.numbers[index].number = number
+        dataWithColorNumbers.saveFavoriteNumbers()
     }
     
     override func add(number: Double) {
         let formattedNumber = FormattedNumber.init(number: number)
-        dataWithColorNumbers!.loveNumbers!.append(formattedNumber)
-        dataWithColorNumbers!.numbers.append(formattedNumber)
+        dataWithColorNumbers.loveNumbers!.append(formattedNumber)
+        dataWithColorNumbers.numbers.append(formattedNumber)
     }
     
     override func delete(fromIndexPath indexPath: IndexPath) {

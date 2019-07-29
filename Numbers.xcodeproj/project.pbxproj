@@ -18,7 +18,6 @@
 		110C727122DDD2230096817A /* AddingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110C727022DDD2230096817A /* AddingCell.swift */; };
 		1138113022E1CB48001D1066 /* CellWithNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138112F22E1CB48001D1066 /* CellWithNumberViewModel.swift */; };
 		1138113222E1E222001D1066 /* AddingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113122E1E222001D1066 /* AddingCellViewModel.swift */; };
-		1138113522E58BB4001D1066 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113422E58BB4001D1066 /* Box.swift */; };
 		1138113722E58EE1001D1066 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113622E58EE1001D1066 /* EditViewModel.swift */; };
 		1138113922E5CEFC001D1066 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113822E5CEFC001D1066 /* FavoriteViewModel.swift */; };
 		1138113B22E6E25E001D1066 /* AllListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138113A22E6E25E001D1066 /* AllListViewModel.swift */; };
@@ -50,7 +49,6 @@
 		1138112C22E1C63F001D1066 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1138112F22E1CB48001D1066 /* CellWithNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithNumberViewModel.swift; sourceTree = "<group>"; };
 		1138113122E1E222001D1066 /* AddingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingCellViewModel.swift; sourceTree = "<group>"; };
-		1138113422E58BB4001D1066 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		1138113622E58EE1001D1066 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
 		1138113822E5CEFC001D1066 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		1138113A22E6E25E001D1066 /* AllListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewModel.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 				1138114422E714F7001D1066 /* StoryBoards */,
 				110C724822D84E620096817A /* AppDelegate.swift */,
 				1138112C22E1C63F001D1066 /* LaunchScreen.storyboard */,
-				1138113422E58BB4001D1066 /* Box.swift */,
 				1138113E22E71004001D1066 /* Coordinators */,
 				11BD86B222E1C2E500D772BB /* View */,
 				11BD86B122E1C2DA00D772BB /* ViewModel */,
@@ -268,7 +265,6 @@
 				1138115222E981BE001D1066 /* GraphViewController.swift in Sources */,
 				1138114C22E71FA6001D1066 /* AllListCoordinator.swift in Sources */,
 				1138113D22E6FBD8001D1066 /* FormattedNumbersStore.swift in Sources */,
-				1138113522E58BB4001D1066 /* Box.swift in Sources */,
 				1138113022E1CB48001D1066 /* CellWithNumberViewModel.swift in Sources */,
 				1138113722E58EE1001D1066 /* EditViewModel.swift in Sources */,
 				110C724922D84E620096817A /* AppDelegate.swift in Sources */,

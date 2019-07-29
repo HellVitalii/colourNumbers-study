@@ -12,46 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var data: FormattedNumbersStore?
-    
-    var coordinator: MainCoordinator?
+    //var data: FormattedNumbersStore?
+    var coordinator: Coordinator!
     
     
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        self.data = FormattedNumbersStore.init()
         
+        coordinator = TabCoordintator()
         
-        /*let tabBarController = self.window?.rootViewController as? UITabBarController
-        let navigationControllerAll = tabBarController!.customizableViewControllers![0] as? UINavigationController
-        let destVCAll = navigationControllerAll?.viewControllers[0] as? NumbersViewController
-        //destVCAll?.tabBarItem.
-        
-        allListViewModel.dataWithColorNumbers = self.data
-        allListViewModel.selectedUIView = true
-        allListViewModel.delegate = destVCAll!
-        destVCAll?.viewModel = allListViewModel
-        
-        let navigationControllerFavorite = tabBarController!.customizableViewControllers![1] as? UINavigationController
-        let destVCFavorite = navigationControllerFavorite?.viewControllers[0] as? NumbersViewController
-        
-        favoriteViewModel.dataWithColorNumbers = self.data
-        favoriteViewModel.selectedUIView = true
-        favoriteViewModel.delegate = destVCFavorite!
-        destVCFavorite?.viewModel = favoriteViewModel*/
-        
-        // create the main navigation controller to be used for our app
-        
-        
-        // send that into our coordinator so that it can display view controllers
-        coordinator = MainCoordinator()
-        
-        // tell the coordinator to take over control
- 
-        
-        // create a basic UIWindow and activate it
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = coordinator?.rootViewController
         window?.makeKeyAndVisible()
@@ -67,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        self.data?.saveFavoriteNumbers()
         
         
     }

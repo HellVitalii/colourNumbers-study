@@ -60,9 +60,11 @@ class BaseViewModel {
     func changeNumber(with number: Double) {
         if let index = dataWithColorNumbers.loveNumbers!.firstIndex(of: dataWithColorNumbers.numbers[selectedIndexPath!.row]) {
             dataWithColorNumbers.loveNumbers![index].number = number
+            dataWithColorNumbers.saveFavoriteNumbers()
+            
         }
-        
         dataWithColorNumbers.numbers[selectedIndexPath!.row].number = number
+        
     }
     
     func pressedCell(with indexPath: IndexPath) {
@@ -78,6 +80,7 @@ class BaseViewModel {
         
         if let index = dataWithColorNumbers.loveNumbers!.firstIndex(of: dataWithColorNumbers.numbers[indexPath.row]) {
             dataWithColorNumbers.loveNumbers!.remove(at: index)
+            
         }
         dataWithColorNumbers.numbers.remove(at: indexPath.row)
         delegate?.deleteRow(fromIndexPath: indexPath)

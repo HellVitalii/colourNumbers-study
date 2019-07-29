@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator {
+class TabCoordintator: Coordinator {
     
     var rootViewController: UIViewController {
         return tabBarController
